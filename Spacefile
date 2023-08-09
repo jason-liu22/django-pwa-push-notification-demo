@@ -1,0 +1,26 @@
+# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+
+v: 0
+micros:
+  - name: django-pwa-push-notification
+    src: .
+    engine: python3.9
+    public: true
+    primary: true
+    run: python manage.py migrate && gunicorn pollme.wsgi
+    # presets:
+    #   env:
+    #     - name: ENVIRONMENT
+    #       value: production
+    #     - name: SQL_ENGINE
+    #       value: django.db.backends.postgresql
+    #     - name: SQL_DATABASE
+    #       value: db_name
+    #     - name: SQL_USER
+    #       value: psql
+    #     - name: SQL_PASSWORD
+    #       value: password
+    #     - name: SQL_HOST
+    #       value: dbhost
+    #     - name: SQL_PORT
+    #       value: '5432'
