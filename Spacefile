@@ -28,7 +28,7 @@ micros:
   - name: serve-static-files
     src: ./static_serve_micro
     engine: python3.9
+    public: true
+    path: cdn
     run: uvicorn main:app
     # primary: true
-    public_routes:
-      - "/static/*"
