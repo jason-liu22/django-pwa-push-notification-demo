@@ -3,7 +3,7 @@
 v: 0
 micros:
   - name: django-pwa-push-notification
-    src: .
+    src: ./app
     engine: python3.9
     public: true
     primary: true
@@ -24,3 +24,11 @@ micros:
     #       value: dbhost
     #     - name: SQL_PORT
     #       value: '5432'
+
+  - name: serve-static-files
+    src: ./static_serve_micro
+    engine: python3.9
+    run: uvicorn main:app
+    # primary: true
+    public_routes:
+      - "/static/*"
