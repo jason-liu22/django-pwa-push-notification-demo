@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block custom_css %}
+<style>
+  textarea {
+    display: block;
+    height: 125px;
+    width: 400px;
+  }
+  button {
+    margin-right: 10px;
+    margin-top: 10px;
+    min-width: 48px;
+    min-height: 48px;
+  }
+</style>
+{% endblock custom_css %}
+
+{% block content %}
+<h1>Push notifications client</h1>
+<noscript>
+  You have JavaScript disabled. This app requires JavaScript to work.
+</noscript>
+<h2>Service worker</h2>
+<textarea readonly id="registration-status-message">
+This browser doesn't support service workers.</textarea>
+<button id="register" onclick="registerServiceWorker()" disabled>
+  Register service worker
+</button>
+<button id="unregister" onclick="unregisterServiceWorker()" disabled>
+  Unregister service worker
+</button>
+<h2>Subscripton</h2>
+<textarea readonly id="subscription-status-message">
+No push subscription is active.</textarea
+>
+<button id="subscribe" onclick="subscribeToPush()" disabled>
+  Subscribe to push
+</button>
+<button id="unsubscribe" onclick="unsubscribeFromPush()" disabled>
+  Unsubscribe from push
+</button>
+<h2>Notifications</h2>
+<textarea readonly id="notification-status-message">
+No notifications sent yet.</textarea>
+<button id="notify-me" onclick="notifyMe()" disabled>Notify me</button>
+<button id="notify-all" onclick="notifyAll()">Notify all</button>
+{% endblock content %}
+
+{% block custom_js %}
+<script src="{% static 'js/app.js' %}"></script>
+{% endblock custom_js %}

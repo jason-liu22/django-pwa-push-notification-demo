@@ -8,22 +8,6 @@ micros:
     public: true
     primary: true
     run: python manage.py migrate && gunicorn pollme.wsgi
-    # presets:
-    #   env:
-    #     - name: ENVIRONMENT
-    #       value: production
-    #     - name: SQL_ENGINE
-    #       value: django.db.backends.postgresql
-    #     - name: SQL_DATABASE
-    #       value: db_name
-    #     - name: SQL_USER
-    #       value: psql
-    #     - name: SQL_PASSWORD
-    #       value: password
-    #     - name: SQL_HOST
-    #       value: dbhost
-    #     - name: SQL_PORT
-    #       value: '5432'
 
   - name: serve-static-files
     src: ./static_serve_micro
@@ -31,4 +15,10 @@ micros:
     public: true
     path: cdn
     run: uvicorn main:app
-    # primary: true
+
+  - name: nodejs-app
+    src: ./push_server
+    engine: nodejs16
+    public: true
+    path: push
+    run: node server.js
